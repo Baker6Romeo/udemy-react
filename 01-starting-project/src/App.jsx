@@ -1,3 +1,4 @@
+import componentImg from "./assets/components.png";
 import reactImg from "./assets/react-core-concepts.png";
 
 function App() {
@@ -5,9 +6,28 @@ function App() {
     <div>
       <Header />
       <main>
-        <h2>Time to get krunk!</h2>
+        <section id="core-concepts">
+          <h2>Core Concepts</h2>
+          <ul>
+            <CoreConcept
+            title="Components"
+            description="The core UI building block"
+            img={componentImg}/>
+          </ul>
+          </section>
+        
       </main>
     </div>
+  );
+}
+
+function CoreConcept(props) {
+  return (
+    <li>
+      <img src={props.img} alt={props.title}/>
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+    </li>
   );
 }
 
