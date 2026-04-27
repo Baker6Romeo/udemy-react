@@ -2,6 +2,9 @@ import reactImg from "../../assets/react-core-concepts.png";
 import "./Header.css";
 
 export default function Header() {
+
+  const descriptionModifier = reactDescriptions[getRandomInt(2)];
+
   return (
     <header>
       <img src={reactImg} alt="Stylized atom" />
