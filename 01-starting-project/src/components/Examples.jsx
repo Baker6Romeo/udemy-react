@@ -17,7 +17,7 @@ export default function Examples() {
 
   if (selectedTopic) {
     tabContent = (
-      <div>              
+      <div id="tab-content">              
           <h3>{EXAMPLES[selectedTopic].title}</h3>
           <p>{EXAMPLES[selectedTopic].description}</p>
           <pre>
@@ -36,25 +36,25 @@ export default function Examples() {
           <>
             <TabButton
               isSelected={selectedTopic === 'components'}
-              onSelect={() => handleSelect('components')}
+              onClick={() => handleSelect('components')}
             >
               Components
             </TabButton>
             <TabButton
               isSelected={selectedTopic === 'jsx'}
-              onSelect={() => handleSelect('jsx')}
+              onClick={() => handleSelect('jsx')}
             >
               JSX
             </TabButton>
             <TabButton
               isSelected={selectedTopic === 'props'}
-              onSelect={() => handleSelect('props')}
+              onClick={() => handleSelect('props')}
             >
               Props
             </TabButton>
             <TabButton
               isSelected={selectedTopic === 'state'}
-              onSelect={() => handleSelect('state')}
+              onClick={() => handleSelect('state')}
             >
               State
             </TabButton>
