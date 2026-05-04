@@ -7,7 +7,7 @@ const initialGameboard = [
 
 ]
 
-export default function GameBoard ()
+export default function GameBoard ({ onSelectSquare, activePlayer})
 {
   const [gameBoard, setGameBoard] = useState(initialGameboard);
 
@@ -15,8 +15,10 @@ export default function GameBoard ()
   {
     setGameBoard((previousGameBoard) => {
     const newGameBoard = [...previousGameBoard.map(innerArray => [...innerArray])];
-    newGameBoard[rowIndex][colIndex] = 'X';
+    newGameBoard[rowIndex][colIndex] = activePlayer;
     return newGameBoard;})
+
+    onSelectSquare();
   }
 
   return(
