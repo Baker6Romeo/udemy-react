@@ -43,15 +43,17 @@ function App() {
     const firstSquareSymbol = gameBoard[combination[0].row][combination[0].column];
     const secondSquareSymbol = gameBoard[combination[1].row][combination[1].column];
     const thirdSqareSymbol = gameBoard[combination[2].row][combination[2].column];
-
+    
     if (firstSquareSymbol &&
       firstSquareSymbol === secondSquareSymbol &&
       secondSquareSymbol === thirdSqareSymbol) {
-        winner = firstSquareSymbol;
-        console.log(winner);
-        
+        winner = firstSquareSymbol;        
       }
   }
+
+  const hasDraw = gameTurns.length === 9 && !winner;
+  console.log("Winner: ", winner);
+  console.log("Draw: ", hasDraw);
 
   function handleSelectSquare (rowIndex, colIndex)
   { 
@@ -79,7 +81,7 @@ function App() {
             symbol="o"
             isActive={activePlayer === 'O'}/>
         </ol>
-        {winner && <GameOver winner={winner}/>}
+        {(winner || hasDraw) && <GameOver winner={winner}/>}
         <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard}></GameBoard>
       </div>
       <Log turns={gameTurns}/>
