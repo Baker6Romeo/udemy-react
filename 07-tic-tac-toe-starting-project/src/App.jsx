@@ -1,4 +1,4 @@
-import { act, useState } from "react"
+import { useState } from "react"
 
 import GameBoard from "./Components/GameBoard"
 import GameOver from "./Components/GameOver";
@@ -27,7 +27,7 @@ function App() {
 
   const activePlayer = getActivePlayer(gameTurns);
 
-  let gameBoard = initialGameboard;
+  let gameBoard = [...initialGameboard.map(array => [...array])];
 
   for (const turn of gameTurns) {
     const {square, player} = turn;
@@ -52,8 +52,6 @@ function App() {
   }
 
   const hasDraw = gameTurns.length === 9 && !winner;
-  console.log("Winner: ", winner);
-  console.log("Draw: ", hasDraw);
 
   function handleSelectSquare (rowIndex, colIndex)
   { 
@@ -66,6 +64,10 @@ function App() {
       ]
       return updatedTurns;
     });
+  }
+
+  function handleRematch () {
+    setGameTurns([]);
   }
 
   return (
@@ -82,7 +84,10 @@ function App() {
             isActive={activePlayer === 'O'}/>
         </ol>
         {(winner || hasDraw) && <GameOver winner={winner}/>}
-        <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard}></GameBoard>
+        <GameBoard
+          onSelectSquare={handleSelectSquare}
+          board={gameBoard}
+          onRematch={handleRematch}></GameBoard>
       </div>
       <Log turns={gameTurns}/>
     </main>
