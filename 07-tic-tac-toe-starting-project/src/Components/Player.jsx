@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player ({initialName, symbol, isActive}) {
+export default function Player ({initialName, isActive, onChangeName, symbol}) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(initialName);
@@ -19,6 +19,9 @@ export default function Player ({initialName, symbol, isActive}) {
   function handleEditClick () {
     // passing an anonymous function allows for value evaluation at runtime instead of scheduling
       setIsEditing(editing => !editing)
+      if (isEditing) {
+        onChangeName(symbol, playerName);
+      }
   }
 
   return (
