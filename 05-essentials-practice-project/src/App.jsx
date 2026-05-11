@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import ResultsTable from "./components/ResultsTable";
 import UserInput from "./components/UserInput";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <main>
       <Header />
       <UserInput />
+      <ResultsTable />
     </main>
   )
 }

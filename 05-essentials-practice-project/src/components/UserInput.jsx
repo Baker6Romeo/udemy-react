@@ -1,5 +1,7 @@
 export default function UserInput () {
   return (
-    <p>user input</p>
+    <div id="user-input">
+      <p>user input</p>
+    </div>
   );
 }
