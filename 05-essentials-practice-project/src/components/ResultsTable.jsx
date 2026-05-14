@@ -1,7 +1,15 @@
-export default function ResultsTable() {
+export default function ResultsTable({results}) {
   return (
-    <div>
-      <p>Results Table</p>
-    </div>
+    <table id="result">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <th>Year</th>
+          <th>Interest</th>
+          <th>Value EOY</th>
+          <th>Annual Investment</th>
+        </tr>
+      </tbody>
+    </table>
   );
 }

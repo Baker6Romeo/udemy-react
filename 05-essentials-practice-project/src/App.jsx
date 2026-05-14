@@ -1,28 +1,33 @@
 import { useState } from "react";
 
+import { calculateInvestmentResults } from "./util/investment";
 import Header from "./components/Header";
 import ResultsTable from "./components/ResultsTable";
 import UserInput from "./components/UserInput";
 
 function App() {
   const [inputs, setInputs] = useState({});
+  const [results, setResults] = useState([]);
 
   function handleValueChange (name, value) {
-    console.log("Starting Inputs: ", inputs);
-    const updatedInputs = {...inputs, [name]: value}
-    console.log("updatedInputs: ", updatedInputs);
-    setInputs(updatedInputs);
-    console.log("New Inputs value: ", inputs);
-    
+      const updatedInputs = {...inputs, [name]: value}
+      setInputs(updatedInputs);
   }
 
-  console.log(inputs)
+  function isValidInputs() {
+    console.log(Object.values(inputs))
+    return Object.values(inputs).every(x => x !== null)
+  }
+
+  console.log(isValidInputs());
+
+  let displayedResults = [...results];
 
   return (
     <main>
       <Header />
       <UserInput onChangeValue={handleValueChange}/>
-      <ResultsTable />
+      <ResultsTable results="results"/>
     </main>
   )
 }
